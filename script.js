@@ -1,6 +1,6 @@
 import { weekPreset, monthPreset } from './presets.js';
 import { buttonsDisabling } from './buttonsDisabling.js';
-import { calculateTimeDiff } from './calculateByTimeType.js'
+import { calculateTimeDiff, getSelectedRadioValue } from './calculateByTimeType.js'
 
 const startApp = () => {
 
@@ -43,19 +43,9 @@ function calculateDateDifference() {
   const timeDiff = endDate.getTime() - startDate.getTime();
   console.log(timeDiff)
 
-  // check what label selected
-  function getSelectedRadioValue() {
-    const radioContainer = document.getElementById('countOptions');
-    const selectedRadio = radioContainer.querySelector('input[name="filter"]:checked');
-    return selectedRadio.id;
-  }
-  const selectedRadioValue = getSelectedRadioValue();
-  console.log(getSelectedRadioValue())
-  
-  
   // Calculate the number of days
-  const numDays = calculateTimeDiff(timeDiff, selectedRadioValue);
-  console.log(numDays, selectedRadioValue)
+  const numDays = calculateTimeDiff(timeDiff, getSelectedRadioValue());
+  console.log(numDays, getSelectedRadioValue())
 
   // Update the table with the result
   const row = tableBody.insertRow();
@@ -64,7 +54,7 @@ function calculateDateDifference() {
   const cell3 = row.insertCell(2);
   cell1.innerHTML = startDate.toLocaleDateString();
   cell2.innerHTML = endDate.toLocaleDateString();
-  cell3.innerHTML = `${numDays} ${selectedRadioValue}`;
+  cell3.innerHTML = `${numDays} ${getSelectedRadioValue()}`;
 }
 
 calculateBtn.addEventListener("click", calculateDateDifference);
