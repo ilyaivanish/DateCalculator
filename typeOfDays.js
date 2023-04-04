@@ -1,3 +1,9 @@
+export function getSelectedRadioValue() {
+    const radioContainer = document.getElementById('dayTypesOptions');
+    const selectedRadio = radioContainer.querySelector('input[name="filter"]:checked');
+return selectedRadio.id;
+}
+
 const startDate = new Date('2023-03-31');
 const endDate = new Date('2023-04-04');
 const timeDiff = endDate.getTime() - startDate.getTime();

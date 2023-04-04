@@ -27,18 +27,18 @@
         <button id="preset-week-btn" disabled>1 Week</button>
         <button id="preset-month-btn" disabled>1 Month</button>
       </div>
-      
-      <div>
-        
-      </div>
 
-      <div class="select-wrapper">
-        <label for="time-options">Time Options:</label>
-        <select id="time-options" name="time-options">
-          <option value="all-days">All Days</option>
-          <option value="working-days">Working Days</option>
-          <option value="weekend">Weekend</option>
-        </select>
+      <div class="radio-container" id="dayTypesOptions">
+        <h4>Which day types need to calculate?</h4>
+
+        <input type="radio" name="filterdayTypes" id="allDays" checked>
+        <label for="allDays">All days</label>
+        
+        <input type="radio" name="filterdayTypes" id="workingDays">
+        <label for="workingDays">Working days</label>
+        
+        <input type="radio" name="afilterdayTypes" id="weekends">
+        <label for="weekends">Weekends</label>
       </div>
 
       <div class="radio-container" id="countOptions">

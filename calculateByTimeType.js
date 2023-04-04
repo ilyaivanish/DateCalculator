@@ -5,8 +5,12 @@ export function getSelectedRadioValue() {
 return selectedRadio.id;
 }
 
+// NEED TO PAST IT (WE CHECK IT IN Script.JS ON 48 LINE)
+// const selectedRadioValue = getSelectedRadioValue();
+
 // Calculate days, hours, minutes or seconds
 export function calculateTimeDiff(timeDiff, selectedRadioValue) {
+  
   let result = null;
 
   if (selectedRadioValue === 'days') {
