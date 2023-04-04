@@ -61,3 +61,4 @@ calculateBtn.addEventListener("click", calculateDateDifference);
 };
 
 document.addEventListener('DOMContentLoaded', startApp);
+
