@@ -1,5 +1,6 @@
 import { weekPreset, monthPreset } from './presets.js';
 import { buttonsDisabling } from './buttonsDisabling.js';
+import { calculateTimeDiff } from './calculateByTimeType.js'
 
 const startApp = () => {
 
@@ -52,22 +53,6 @@ function calculateDateDifference() {
   console.log(getSelectedRadioValue())
   
   
-  function calculateTimeDiff(timeDiff, selectedRadioValue) {
-    let result = null;
-  
-    if (selectedRadioValue === 'days') {
-      result = Math.floor(timeDiff / (1000 * 3600 * 24));
-    } else if (selectedRadioValue === 'hours') {
-      result = Math.floor(timeDiff / (1000 * 3600));
-    } else if (selectedRadioValue === 'minutes') {
-      result = Math.floor(timeDiff / (1000 * 60));
-    } else if (selectedRadioValue === 'seconds') {
-      result = Math.floor(timeDiff / 1000);
-    }
-  
-    return result;
-  }
-
   // Calculate the number of days
   const numDays = calculateTimeDiff(timeDiff, selectedRadioValue);
   console.log(numDays, selectedRadioValue)
