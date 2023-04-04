@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Time Measure</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Time Measure</h1>
+
+
+      <div class="input-wrapper">
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="start-date">
+      </div>
+
+      <!-- <div class="input-wrapper">
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="end-date">
+      </div> -->
+
+      <div class="input-wrapper">
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="end-date" disabled>
+        <button id="preset-week-btn" disabled>1 Week</button>
+        <button id="preset-month-btn" disabled>1 Month</button>
+      </div>
+      
+      <div>
+        
+      </div>
+
+      <div class="select-wrapper">
+        <label for="time-options">Time Options:</label>
+        <select id="time-options" name="time-options">
+          <option value="all-days">All Days</option>
+          <option value="working-days">Working Days</option>
+          <option value="weekend">Weekend</option>
+        </select>
+      </div>
+
+      <div class="radio-container" id="countOptions">
+        <h4>What need to calculate?</h4>
+
+        <input type="radio" name="filter" id="days" checked>
+        <label for="days">Days</label>
+        
+        <input type="radio" name="filter" id="hours">
+        <label for="hours">Hours</label>
+        
+        <input type="radio" name="filter" id="minutes">
+        <label for="minutes">Minutes</label>
+
+        <input type="radio" name="filter" id="seconds">
+        <label for="seconds">Seconds</label>
+      </div>
+
+      <button id="calculate-btn">Calculate</button>
+
+    </div>
+
+    <table class="results-table" id="results-table">
+      <thead>
+        <tr>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
