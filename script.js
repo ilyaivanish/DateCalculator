@@ -40,11 +40,52 @@ function calculateDateDifference() {
   const endDate = new Date(endDateInput.value);
 
   // Calculate the time difference in milliseconds
-  const timeDiff = endDate.getTime() - startDate.getTime();
-  console.log(timeDiff)
+  // const timeDiff = endDate.getTime() - startDate.getTime();
+  // console.log(timeDiff)
 
-  // Calculate the number of days
-  const numDays = calculateTimeDiff(timeDiff, getSelectedRadioValue());
+  function getSelected1RadioValue() {
+    const radioContainer = document.getElementById('dayTypesOptions');
+    const selectedRadio = radioContainer.querySelector('input[name="filterdayTypes"]:checked');
+    return selectedRadio.id;
+  }
+  console.log(getSelected1RadioValue())
+
+function calculateDateDiff(startDate, endDate, selection) {
+  const timeDiff = endDate.getTime() - startDate.getTime();
+  const totalDays = Math.ceil(1 + (timeDiff / (1000 * 60 * 60 * 24)));
+  let workingDays = 0;
+  let weekends = 0;
+  
+  const currentDate = new Date(startDate);
+  while (currentDate <= endDate) {
+    const dayOfWeek = currentDate.getDay();
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+      weekends++;
+    } else {
+      workingDays++;
+    }
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+
+  if (selection === 'allDays') {
+    return totalDays;
+  } else if (selection === 'weekends') {
+    return weekends;
+  } else if (selection === 'workingDays') {
+    return workingDays;
+  } 
+  console.log(totalDays, weekends)
+  // console.log(totalDays, workingDays, weekends)
+  // return { totalDays, workingDays, weekends };
+}
+  
+const numDays = calculateDateDiff(startDate, endDate, getSelected1RadioValue());
+console.log(numDays)
+
+
+  // Calculate the number of days, minutes,seconds
+  // const numDays = calculateDateDiff(timeDiff, getSelectedRadioValue());
   console.log(numDays, getSelectedRadioValue())
 
   // Update the table with the result
