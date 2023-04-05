@@ -58,8 +58,16 @@ function calculateDateDifference() {
   // Converting to time type
   const countOfTime = timeConverter(countOfDays, getSelectedTypeOfTime())
   
+  const table = document.getElementById('results-table');
+  const tableBody = table.querySelector('tbody');
+  
+  // Remove the last row if table already have 10
+  if (tableBody.rows.length >= 10) {
+    tableBody.deleteRow(-1);
+  }
+
   // Update the table with the result
-  const row = tableBody.insertRow();
+  const row = tableBody.insertRow(0);
   const cell1 = row.insertCell(0);
   const cell2 = row.insertCell(1);
   const cell3 = row.insertCell(2);

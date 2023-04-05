@@ -44,19 +44,35 @@ body {
   table-layout: fixed;
   width: 600px;
   border-collapse: separate;
-  border: 3px solid  #fff;
-  background-color: #425742;
+  border: 3px solid  #44644e;
+  border-radius: 10px;
+  background-color: #749974;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+}
+
+.results-table th {
+  text-align: center;
+  border: 3px solid #44644e;
+  padding: 8px;
+}
+
+.results-table td {
+  text-align: center;
+  border: 1px solid #557c62;
+  padding: 5px;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 30px;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  /* position: relative;
-  top: 50px; */
+  position: relative;
+  top: 30px;
 }
 
 h1 {
