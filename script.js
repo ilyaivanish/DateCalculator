@@ -1,4 +1,4 @@
-import { weekPreset, monthPreset } from './presets.js';
+import { setTodayDate, weekPreset, monthPreset } from './presets.js';
 import { buttonsDisabling } from './buttonsDisabling.js';
 import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
 import { getSelectedTypeOfDays, typeOfDaysForMessage, calculateDateDiff } from './typeOfDays.js';
@@ -7,6 +7,7 @@ const startApp = () => {
 
 const startDateInput = document.getElementById('start-date');
 const endDateInput = document.getElementById('end-date');
+const todayDateBtn = document.getElementById('today-btn');
 const presetWeekBtn = document.getElementById('preset-week-btn');
 const presetMonthBtn = document.getElementById('preset-month-btn');
 const calculateBtn = document.getElementById("calculate-btn");
@@ -17,6 +18,11 @@ startDateInput.addEventListener('change', () => {
   buttonsDisabling(startDateInput, endDateInput, presetWeekBtn, presetMonthBtn);
 });
 
+// Set today date and remove disabling for second date picker and presents buttons
+todayDateBtn.addEventListener('click', () =>{
+  setTodayDate(startDateInput)
+  buttonsDisabling(startDateInput, endDateInput, presetWeekBtn, presetMonthBtn)
+}) 
 
 // Calculating for presets
 presetWeekBtn.addEventListener('click', () => {
