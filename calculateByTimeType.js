@@ -5,22 +5,21 @@ export function getSelectedTypeOfTime() {
 return selectedRadio.id;
 }
 
-// NEED TO PAST IT (WE CHECK IT IN Script.JS ON 48 LINE)
 // const selectedRadioValue = getSelectedRadioValue();
 
 // Calculate days, hours, minutes or seconds
-export function timeConverter(timeDiff, selectedRadioValue) {
+export function timeConverter(timeDiff, selectedRadio2Value) {
   
   let result = null;
 
-  if (selectedRadioValue === 'days') {
-    result = Math.floor(timeDiff * (1000 * 3600 * 24));
-  } else if (selectedRadioValue === 'hours') {
-    result = Math.floor(timeDiff * (1000 * 3600));
-  } else if (selectedRadioValue === 'minutes') {
-    result = Math.floor(timeDiff * (1000 * 60));
-  } else if (selectedRadioValue === 'seconds') {
-    result = Math.floor(timeDiff * 1000);
+  if (selectedRadio2Value === 'days') {
+    result = timeDiff;
+  } else if (selectedRadio2Value === 'hours') {
+    result = Math.floor(timeDiff * 24);
+  } else if (selectedRadio2Value === 'minutes') {
+    result = Math.floor(timeDiff * (24 * 60));
+  } else if (selectedRadio2Value === 'seconds') {
+    result = Math.floor(timeDiff * (24 * 60 * 60));
   }
 
   return result;

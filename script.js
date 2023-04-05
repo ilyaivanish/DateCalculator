@@ -1,7 +1,7 @@
 import { weekPreset, monthPreset } from './presets.js';
 import { buttonsDisabling } from './buttonsDisabling.js';
 import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
-import { getSelectedTypeOfDays, calculateDateDiff } from './typeOfDays.js';
+import { getSelectedTypeOfDays, typeOfDaysForMessage, calculateDateDiff } from './typeOfDays.js';
 
 const startApp = () => {
 
@@ -36,13 +36,13 @@ function calculateDateDifference() {
   // Get the input values
   const startDate = new Date(startDateInput.value);
   const endDate = new Date(endDateInput.value);
+
+  // Calculate difference by day types
+  const numDays = calculateDateDiff(startDate, endDate, getSelectedTypeOfDays());
+
+  // Converting to time type
+  const numOfTime = timeConverter(numDays, getSelectedTypeOfTime())
   
-const numDays = calculateDateDiff(startDate, endDate, getSelectedTypeOfDays());
-console.log(numDays)
-
-const numOfTime = timeConverter(numDays, getSelectedTypeOfTime())
-
-
   // Update the table with the result
   const row = tableBody.insertRow();
   const cell1 = row.insertCell(0);
@@ -50,7 +50,7 @@ const numOfTime = timeConverter(numDays, getSelectedTypeOfTime())
   const cell3 = row.insertCell(2);
   cell1.innerHTML = startDate.toLocaleDateString();
   cell2.innerHTML = endDate.toLocaleDateString();
-  cell3.innerHTML = `${numDays} ${numOfTime} ${getSelectedTypeOfDays()}`;
+  cell3.innerHTML = `${numOfTime} ${getSelectedTypeOfTime()} in ${numDays} ${typeOfDaysForMessage(getSelectedTypeOfDays())}`;
 }
 
 calculateBtn.addEventListener("click", calculateDateDifference);

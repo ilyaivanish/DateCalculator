@@ -5,7 +5,19 @@ export function getSelectedTypeOfDays() {
   return selectedRadio.id;
 }
 
-export function calculateDateDiff(startDate, endDate, selection) {
+// Set type of days in the end of message in table
+export function typeOfDaysForMessage(selectedRadio1Value) {
+if (selectedRadio1Value === 'allDays') {
+  return 'days';
+} else if (selectedRadio1Value === 'weekends') {
+  return 'weekends';
+} else if (selectedRadio1Value === 'workingDays') {
+  return 'working days';
+} }
+
+
+// calculate days by types
+export function calculateDateDiff(startDate, endDate, selectedRadio1Value) {
   const timeDiff = endDate.getTime() - startDate.getTime();
   const totalDays = Math.ceil(1 + (timeDiff / (1000 * 60 * 60 * 24)));
   let workingDays = 0;
@@ -22,11 +34,11 @@ export function calculateDateDiff(startDate, endDate, selection) {
     currentDate.setDate(currentDate.getDate() + 1);
   }
 
-  if (selection === 'allDays') {
+  if (selectedRadio1Value === 'allDays') {
     return totalDays;
-  } else if (selection === 'weekends') {
+  } else if (selectedRadio1Value === 'weekends') {
     return weekends;
-  } else if (selection === 'workingDays') {
+  } else if (selectedRadio1Value === 'workingDays') {
     return workingDays;
   } 
 }
