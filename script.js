@@ -2,8 +2,11 @@ import { setTodayDate, weekPreset, monthPreset } from './presets.js';
 import { buttonsDisabling, calculateButtonDisabling } from './buttonsDisabling.js';
 import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
 import { getSelectedTypeOfDays, typeOfDaysForMessage, calculateDateDiff } from './typeOfDays.js';
+import { saveTableResultsToLocalStorage, loadTableResultsFromLocalStorage } from './localStorage.js';
 
 const startApp = () => {
+
+loadTableResultsFromLocalStorage()
 
 const startDateInput = document.getElementById('start-date');
 const endDateInput = document.getElementById('end-date');
@@ -74,10 +77,14 @@ function calculateDateDifference() {
   cell1.innerHTML = startDate.toLocaleDateString();
   cell2.innerHTML = endDate.toLocaleDateString();
   cell3.innerHTML = `${countOfTime} ${getSelectedTypeOfTime()} in ${countOfDays} ${typeOfDaysForMessage(getSelectedTypeOfDays())}`;
+
+  
 }
 
-calculateBtn.addEventListener("click", calculateDateDifference);
+calculateBtn.addEventListener('click', calculateDateDifference);
+calculateBtn.addEventListener('click', saveTableResultsToLocalStorage);
 };
+
 
 document.addEventListener('DOMContentLoaded', startApp);
 
