@@ -1,17 +1,15 @@
 import { weekPreset, monthPreset } from './presets.js';
 import { buttonsDisabling } from './buttonsDisabling.js';
-import { calculateTimeDiff, getSelectedRadioValue } from './calculateByTimeType.js'
+import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
+import { getSelectedTypeOfDays, calculateDateDiff } from './typeOfDays.js';
 
 const startApp = () => {
 
 const startDateInput = document.getElementById('start-date');
 const endDateInput = document.getElementById('end-date');
-
 const presetWeekBtn = document.getElementById('preset-week-btn');
 const presetMonthBtn = document.getElementById('preset-month-btn');
-
 const calculateBtn = document.getElementById("calculate-btn");
-
 const tableBody = document.querySelector("#results-table tbody");
 
 // Remove disabling for second date picker and presents buttons
@@ -38,55 +36,12 @@ function calculateDateDifference() {
   // Get the input values
   const startDate = new Date(startDateInput.value);
   const endDate = new Date(endDateInput.value);
-
-  // Calculate the time difference in milliseconds
-  // const timeDiff = endDate.getTime() - startDate.getTime();
-  // console.log(timeDiff)
-
-  function getSelected1RadioValue() {
-    const radioContainer = document.getElementById('dayTypesOptions');
-    const selectedRadio = radioContainer.querySelector('input[name="filterdayTypes"]:checked');
-    return selectedRadio.id;
-  }
-  console.log(getSelected1RadioValue())
-
-function calculateDateDiff(startDate, endDate, selection) {
-  const timeDiff = endDate.getTime() - startDate.getTime();
-  const totalDays = Math.ceil(1 + (timeDiff / (1000 * 60 * 60 * 24)));
-  let workingDays = 0;
-  let weekends = 0;
   
-  const currentDate = new Date(startDate);
-  while (currentDate <= endDate) {
-    const dayOfWeek = currentDate.getDay();
-    if (dayOfWeek === 0 || dayOfWeek === 6) {
-      weekends++;
-    } else {
-      workingDays++;
-    }
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-
-
-  if (selection === 'allDays') {
-    return totalDays;
-  } else if (selection === 'weekends') {
-    return weekends;
-  } else if (selection === 'workingDays') {
-    return workingDays;
-  } 
-  console.log(totalDays, weekends)
-  // console.log(totalDays, workingDays, weekends)
-  // return { totalDays, workingDays, weekends };
-}
-  
-const numDays = calculateDateDiff(startDate, endDate, getSelected1RadioValue());
+const numDays = calculateDateDiff(startDate, endDate, getSelectedTypeOfDays());
 console.log(numDays)
 
+const numOfTime = timeConverter(numDays, getSelectedTypeOfTime())
 
-  // Calculate the number of days, minutes,seconds
-  // const numDays = calculateDateDiff(timeDiff, getSelectedRadioValue());
-  console.log(numDays, getSelectedRadioValue())
 
   // Update the table with the result
   const row = tableBody.insertRow();
@@ -95,7 +50,7 @@ console.log(numDays)
   const cell3 = row.insertCell(2);
   cell1.innerHTML = startDate.toLocaleDateString();
   cell2.innerHTML = endDate.toLocaleDateString();
-  cell3.innerHTML = `${numDays} ${getSelectedRadioValue()}`;
+  cell3.innerHTML = `${numDays} ${numOfTime} ${getSelectedTypeOfDays()}`;
 }
 
 calculateBtn.addEventListener("click", calculateDateDifference);
