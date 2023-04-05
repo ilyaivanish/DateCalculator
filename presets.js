@@ -1,7 +1,7 @@
 export function setTodayDate(startDateInput) {
     const today = new Date();
     startDateInput.value = today.toISOString().slice(0,10);
-  }
+}
   
 
 export function weekPreset(startDateInput, endDateInput) {
