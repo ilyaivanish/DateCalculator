@@ -14,7 +14,8 @@ const todayDateBtn = document.getElementById('today-btn');
 const presetWeekBtn = document.getElementById('preset-week-btn');
 const presetMonthBtn = document.getElementById('preset-month-btn');
 const calculateBtn = document.getElementById("calculate-btn");
-const tableBody = document.querySelector("#results-table tbody");
+const table = document.getElementById('results-table');
+const tableBody = table.querySelector('tbody');
 
 // Set the minimum date for the end date input field to be the same as the start date
 startDateInput.addEventListener('change', function() {
@@ -60,9 +61,6 @@ function calculateDateDifference() {
 
   // Converting to time type
   const countOfTime = timeConverter(countOfDays, getSelectedTypeOfTime())
-  
-  const table = document.getElementById('results-table');
-  const tableBody = table.querySelector('tbody');
   
   // Remove the last row if table already have 10
   if (tableBody.rows.length >= 10) {
