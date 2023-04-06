@@ -1,5 +1,5 @@
 import { setTodayDate, weekPreset, monthPreset } from './presets.js';
-import { buttonsDisabling, calculateButtonDisabling, radioBtnsDisabling } from './buttonsDisabling.js';
+import { secondDateButtonsEnabling, calculateButtonEnabling, radioBtnsEnabling } from './buttonsEnabling.js';
 import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
 import { getSelectedTypeOfDays, typeOfDaysForMessage, calculateDateDiff } from './typeOfDays.js';
 import { saveTableResultsToLocalStorage, loadTableResultsFromLocalStorage } from './localStorage.js';
@@ -26,32 +26,32 @@ startDateInput.addEventListener('change', function() {
 // Set today date and remove disabling for second date picker and presents buttons
 todayDateBtn.addEventListener('click', () =>{
   setTodayDate(startDateInput);
-  buttonsDisabling(startDateInput, endDateInput, presetWeekBtn, presetMonthBtn);
+  secondDateButtonsEnabling(startDateInput, endDateInput, presetWeekBtn, presetMonthBtn);
   endDateInput.setAttribute('min', startDateInput.value);
 }) 
 
 // Remove disabling for second date picker and presents buttons
 startDateInput.addEventListener('change', () => {
-  buttonsDisabling(startDateInput, endDateInput, presetWeekBtn, presetMonthBtn);
+  secondDateButtonsEnabling(startDateInput, endDateInput, presetWeekBtn, presetMonthBtn);
 });
 
 // Calculating for presets and remove disabling for calculate button
 presetWeekBtn.addEventListener('click', () => {
   weekPreset(startDateInput, endDateInput);
-  calculateButtonDisabling(endDateInput, calculateBtn);
-  radioBtnsDisabling(endDateInput, radioBtns)
+  calculateButtonEnabling(endDateInput, calculateBtn);
+  radioBtnsEnabling(endDateInput, radioBtns)
 });
 
 presetMonthBtn.addEventListener('click', () => {
   monthPreset(startDateInput, endDateInput);
-  calculateButtonDisabling(endDateInput, calculateBtn);
-  radioBtnsDisabling(endDateInput, radioBtns)
+  calculateButtonEnabling(endDateInput, calculateBtn);
+  radioBtnsEnabling(endDateInput, radioBtns)
 });
 
 // Remove disabling for calculate button if second date picker recieved date
 endDateInput.addEventListener('change', () => {
-  calculateButtonDisabling(endDateInput, calculateBtn);
-  radioBtnsDisabling(endDateInput, radioBtns)
+  calculateButtonEnabling(endDateInput, calculateBtn);
+  radioBtnsEnabling(endDateInput, radioBtns)
 })
 
 
@@ -78,9 +78,14 @@ function calculateDateDifference() {
   const cell3 = row.insertCell(2);
   cell1.innerHTML = startDate.toLocaleDateString();
   cell2.innerHTML = endDate.toLocaleDateString();
-  cell3.innerHTML = `${countOfTime} ${getSelectedTypeOfTime()} in ${countOfDays} ${typeOfDaysForMessage(getSelectedTypeOfDays())}`;
 
-  
+  // If we select Day for time type we change message for easy understanding
+  if (getSelectedTypeOfTime() === 'days') {
+    cell3.innerHTML = `${countOfDays} ${typeOfDaysForMessage(getSelectedTypeOfDays())}`;
+  } else {
+    cell3.innerHTML = `In ${countOfDays} ${typeOfDaysForMessage(getSelectedTypeOfDays())} ${countOfTime} ${getSelectedTypeOfTime()}`;
+  }
+
 }
 
 calculateBtn.addEventListener('click', calculateDateDifference);

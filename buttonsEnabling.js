@@ -1,6 +1,6 @@
 // Function that remove disabling for preset buttons and second date picker
 
-export function buttonsDisabling(startDateInput, endDateInput, presetWeekBtn, presetMonthBtn) {
+export function secondDateButtonsEnabling(startDateInput, endDateInput, presetWeekBtn, presetMonthBtn) {
     if (startDateInput.value) {
       endDateInput.removeAttribute('disabled');
       presetWeekBtn.removeAttribute('disabled');
@@ -12,7 +12,9 @@ export function buttonsDisabling(startDateInput, endDateInput, presetWeekBtn, pr
     }
 }
 
-export function radioBtnsDisabling(endDateInput, radioBtns) {
+// Function that remove disabling for calculate type switchers
+
+export function radioBtnsEnabling(endDateInput, radioBtns) {
   if (endDateInput.value) {
     for (let i = 0; i < radioBtns.length; i++) {
       radioBtns[i].removeAttribute('disabled');
@@ -24,10 +26,9 @@ export function radioBtnsDisabling(endDateInput, radioBtns) {
   }
 }
 
-
 // Function that remove disabling for calculate button
 
-export function calculateButtonDisabling(endDateInput, calculateBtn) {
+export function calculateButtonEnabling(endDateInput, calculateBtn) {
   if (endDateInput.value) {
     calculateBtn.removeAttribute('disabled');
   } else {
