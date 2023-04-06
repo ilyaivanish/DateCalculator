@@ -5,7 +5,7 @@ body {
 }
 
 /* calculate button */
-#calculate-btn {
+.calculate-btn {
   font-size: 20px;
   color: #fff;
   background-color: #007bff;
@@ -16,12 +16,38 @@ body {
   border-radius: 5px;
 }
 
-#calculate-btn:disabled {
+.calculate-btn:disabled {
   background-color:  #61adff;
   cursor: not-allowed;
 }
 
-#calculate-btn:hover:not(:disabled) {
+.calculate-btn:hover:not(:disabled) {
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  transform: scale(1.1);
+}
+
+.delete-btn-container {
+  margin-top: 20px;
+}
+
+.delete-data-btn {
+  font-size: 20px;
+  color: #fff;
+  background-color: #ff0000;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 100px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.delete-data-btn {
+  background-color:  #fd4848;
+  cursor: not-allowed;
+}
+
+.delete-data-btn:hover:not(:disabled) {
   cursor: pointer;
   transition: transform 0.5s ease;
   transform: scale(1.1);

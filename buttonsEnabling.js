@@ -35,4 +35,6 @@ export function calculateButtonEnabling(endDateInput, calculateBtn) {
     calculateBtn.setAttribute('disabled', true);
   }
 }
+
+
   

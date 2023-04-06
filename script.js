@@ -2,11 +2,9 @@ import { setTodayDate, weekPreset, monthPreset } from './presets.js';
 import { secondDateButtonsEnabling, calculateButtonEnabling, radioBtnsEnabling } from './buttonsEnabling.js';
 import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
 import { getSelectedTypeOfDays, typeOfDaysForMessage, calculateDateDiff } from './typeOfDays.js';
-import { saveTableResultsToLocalStorage, loadTableResultsFromLocalStorage } from './localStorage.js';
+import { saveTableResultsToLocalStorage, loadTableResultsFromLocalStorage, enableDeleteButton, deleteSavedData } from './localStorage.js';
 
 const startApp = () => {
-
-loadTableResultsFromLocalStorage()
 
 const startDateInput = document.getElementById('start-date');
 const endDateInput = document.getElementById('end-date');
@@ -17,6 +15,10 @@ const radioBtns = document.getElementsByClassName('radio-buttons');
 const calculateBtn = document.getElementById("calculate-btn");
 const table = document.getElementById('results-table');
 const tableBody = table.querySelector('tbody');
+const deleteBtn = document.getElementById('delete-data-btn');
+
+loadTableResultsFromLocalStorage()
+enableDeleteButton(table, deleteBtn)
 
 // Set the minimum date for the end date input field to be the same as the start date
 startDateInput.addEventListener('change', function() {
@@ -90,6 +92,10 @@ function calculateDateDifference() {
 
 calculateBtn.addEventListener('click', calculateDateDifference);
 calculateBtn.addEventListener('click', saveTableResultsToLocalStorage);
+calculateBtn.addEventListener('click', () => {
+  deleteBtn.removeAttribute('disabled');
+})
+deleteBtn.addEventListener('click', deleteSavedData);
 };
 
 
