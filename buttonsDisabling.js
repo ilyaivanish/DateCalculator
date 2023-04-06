@@ -12,6 +12,19 @@ export function buttonsDisabling(startDateInput, endDateInput, presetWeekBtn, pr
     }
 }
 
+export function radioBtnsDisabling(endDateInput, radioBtns) {
+  if (endDateInput.value) {
+    for (let i = 0; i < radioBtns.length; i++) {
+      radioBtns[i].removeAttribute('disabled');
+    }
+  } else {
+    for (let i = 0; i < radioBtns.length; i++) {
+      radioBtns[i].setAttribute('disabled', 'true');
+    }
+  }
+}
+
+
 // Function that remove disabling for calculate button
 
 export function calculateButtonDisabling(endDateInput, calculateBtn) {

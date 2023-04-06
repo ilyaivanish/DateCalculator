@@ -1,5 +1,5 @@
 import { setTodayDate, weekPreset, monthPreset } from './presets.js';
-import { buttonsDisabling, calculateButtonDisabling } from './buttonsDisabling.js';
+import { buttonsDisabling, calculateButtonDisabling, radioBtnsDisabling } from './buttonsDisabling.js';
 import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
 import { getSelectedTypeOfDays, typeOfDaysForMessage, calculateDateDiff } from './typeOfDays.js';
 import { saveTableResultsToLocalStorage, loadTableResultsFromLocalStorage } from './localStorage.js';
@@ -13,6 +13,7 @@ const endDateInput = document.getElementById('end-date');
 const todayDateBtn = document.getElementById('today-btn');
 const presetWeekBtn = document.getElementById('preset-week-btn');
 const presetMonthBtn = document.getElementById('preset-month-btn');
+const radioBtns = document.getElementsByClassName('radio-buttons');
 const calculateBtn = document.getElementById("calculate-btn");
 const table = document.getElementById('results-table');
 const tableBody = table.querySelector('tbody');
@@ -38,16 +39,19 @@ startDateInput.addEventListener('change', () => {
 presetWeekBtn.addEventListener('click', () => {
   weekPreset(startDateInput, endDateInput);
   calculateButtonDisabling(endDateInput, calculateBtn);
+  radioBtnsDisabling(endDateInput, radioBtns)
 });
 
 presetMonthBtn.addEventListener('click', () => {
   monthPreset(startDateInput, endDateInput);
   calculateButtonDisabling(endDateInput, calculateBtn);
+  radioBtnsDisabling(endDateInput, radioBtns)
 });
 
 // Remove disabling for calculate button if second date picker recieved date
 endDateInput.addEventListener('change', () => {
   calculateButtonDisabling(endDateInput, calculateBtn);
+  radioBtnsDisabling(endDateInput, radioBtns)
 })
 
 

@@ -74,8 +74,7 @@ body {
   transform: scale(1.1);
 }
 
-
-
+/* radio buttons */
 
 
 .radio-container {
@@ -112,6 +111,20 @@ body {
   color: #fff;
   border-color: #007bff;
 }
+
+.radio-container input[type="radio"]:checked:disabled + label {
+  color: #fff;
+  border-color: #61adff;
+  background-color: #61adff;
+  cursor: not-allowed;
+}
+
+.radio-container input[type="radio"]:disabled + label {
+  color: #ffffff;
+  border-color: #abacad;
+  background-color: #abacad;
+  cursor: not-allowed;
+}
   
 .results-table {
   margin: 0 auto;
@@ -147,6 +160,18 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   position: relative;
   top: 30px;
+}
+
+.table-container {
+  min-width: fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  top: 50px;
 }
 
 h1 {
