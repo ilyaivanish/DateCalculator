@@ -56,7 +56,6 @@ endDateInput.addEventListener('change', () => {
   radioBtnsEnabling(endDateInput, radioBtns)
 })
 
-
 function calculateDateDifference() {
   // Get the input values
   const startDate = new Date(startDateInput.value);
@@ -93,8 +92,8 @@ function calculateDateDifference() {
 calculateBtn.addEventListener('click', calculateDateDifference);
 calculateBtn.addEventListener('click', saveTableResultsToLocalStorage);
 calculateBtn.addEventListener('click', () => {
-  deleteBtn.removeAttribute('disabled');
-})
+  deleteBtn.style.display = 'block';
+});
 deleteBtn.addEventListener('click', deleteSavedData);
 };
 

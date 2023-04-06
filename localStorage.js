@@ -51,10 +51,12 @@ export function saveTableResultsToLocalStorage() {
     localStorage.setItem('tableData', tableDataJson);
 }  
 
-// Enable Delete button
+// Enable Delete button if we load some rows from local storage
 export function enableDeleteButton(table, deleteBtn) {
   if (table.getElementsByTagName('td').length > 0) {
-    deleteBtn.removeAttribute('disabled');
+    deleteBtn.style.display = 'block';
+  } else {
+    deleteBtn.style.display = 'none';
   }
 }
 
@@ -72,6 +74,6 @@ export function deleteSavedData() {
     rows.forEach(function(row) {
       row.remove();
     });
-    deleteBtn.setAttribute('disabled', '');
+    deleteBtn.style.display = 'none';
   }
 }

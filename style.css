@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #a7c4aad7;
+    background-color: #d0e5f1d7;
     margin: 0;
 }
 
@@ -37,14 +37,9 @@ body {
   background-color: #ff0000;
   display: block;
   margin: 0 auto;
-  padding: 10px 100px;
+  padding: 10px 35px;
   border: 1px solid #ced4da;
   border-radius: 5px;
-}
-
-.delete-data-btn {
-  background-color:  #fd4848;
-  cursor: not-allowed;
 }
 
 .delete-data-btn:hover:not(:disabled) {
@@ -152,22 +147,22 @@ body {
   table-layout: fixed;
   width: 600px;
   border-collapse: separate;
-  border: 3px solid  #44644e;
+  border: 3px solid  #007bff;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: #749974;
+  background-color: #aed5ff;
   border-spacing: 0;
 }
 
 .results-table th {
   text-align: center;
-  border: 3px solid #44644e;
+  border: 3px solid #007bff;
   padding: 8px;
 }
 
 .results-table td {
   text-align: center;
-  border: 2px solid #557c62;
+  border: 2px solid #007bff;
   padding: 5px;
 }
 
