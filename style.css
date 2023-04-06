@@ -1,11 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #a7c4aad7;
+    background-color: #d0e5f1d7;
     margin: 0;
 }
 
 /* calculate button */
-#calculate-btn {
+.calculate-btn {
   font-size: 20px;
   color: #fff;
   background-color: #007bff;
@@ -16,12 +16,33 @@ body {
   border-radius: 5px;
 }
 
-#calculate-btn:disabled {
+.calculate-btn:disabled {
   background-color:  #61adff;
   cursor: not-allowed;
 }
 
-#calculate-btn:hover:not(:disabled) {
+.calculate-btn:hover:not(:disabled) {
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  transform: scale(1.1);
+}
+
+.delete-btn-container {
+  margin-top: 20px;
+}
+
+.delete-data-btn {
+  font-size: 20px;
+  color: #fff;
+  background-color: #ff0000;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 35px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.delete-data-btn:hover:not(:disabled) {
   cursor: pointer;
   transition: transform 0.5s ease;
   transform: scale(1.1);
@@ -74,8 +95,7 @@ body {
   transform: scale(1.1);
 }
 
-
-
+/* radio buttons */
 
 
 .radio-container {
@@ -90,15 +110,10 @@ body {
 
 .radio-container label {
   display: inline-block;
-  margin-right: 5px;
-  margin-left: 50px;
-  padding: 5px 10px;
+  padding: 10px 10px;
   border: 1px solid #ced4da;
   border-radius: 5px;
-}
-
-.radio-container label {
-  margin: 20px;
+  margin: 10px;
   cursor: pointer;
   text-align: center;
 }
@@ -112,30 +127,71 @@ body {
   color: #fff;
   border-color: #007bff;
 }
-  
+
+.radio-container input[type="radio"]:checked:disabled + label {
+  color: #fff;
+  border-color: #61adff;
+  background-color: #61adff;
+  cursor: not-allowed;
+}
+
+.radio-container input[type="radio"]:disabled + label {
+  color: #ffffff;
+  border-color: #abacad;
+  background-color: #abacad;
+  cursor: not-allowed;
+}
+  /* table with results */
 .results-table {
   margin: 0 auto;
   table-layout: fixed;
   width: 600px;
   border-collapse: separate;
-  border: 3px solid  #44644e;
-  border-radius: 10px;
-  background-color: #749974;
-  border-collapse: collapse;
+  border: 3px solid  #007bff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #aed5ff;
   border-spacing: 0;
-
 }
 
 .results-table th {
   text-align: center;
-  border: 3px solid #44644e;
+  border: 3px solid #007bff;
   padding: 8px;
 }
 
 .results-table td {
   text-align: center;
-  border: 1px solid #557c62;
+  border: 2px solid #007bff;
   padding: 5px;
+}
+
+tr td:first-child {
+  border-left: none;
+  border-bottom: none;
+}
+
+tr td:nth-child(2) {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+tr td:last-child {
+  border-bottom: none;
+  border-right: none;
+}
+
+
+/* Remove the border on the first and last th elements in each column */
+tr:first-child th {
+  border-top: none;
+  border-left: none;
+}
+
+tr:last-child th {
+  border-bottom: none;
+  border-right: none;
 }
 
 .container {
@@ -149,20 +205,40 @@ body {
   top: 30px;
 }
 
+.table-container {
+  min-width: fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  top: 50px;
+}
+
 h1 {
   text-align: center;
 }
 
+.radio-container {
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+  border-bottom: 1.5px solid #abacad;
+}
+
 .input-wrapper {
+  font-weight: bolder;
   display: flex;
-  margin-bottom: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1.5px solid #abacad;
 }
 
 .input-wrapper label {
   flex-basis: 150px;
   margin-right: 10px;
   align-self: center;
-
 }
 
 .input-wrapper input {
