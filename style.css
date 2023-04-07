@@ -67,7 +67,6 @@ body {
 }
 
 /* week preset button */
-
 .presets-buttons {
   font-size: 15px;
   color: #fff;
@@ -76,12 +75,6 @@ body {
   padding: 10px 20px;
   border: 1px solid #ced4da;
   border-radius: 5px;
-}
-
-.presets-buttons {
-  transition: transform 0.5s ease;
-  transform: scale(1.1);
-  cursor: pointer;
 }
 
 .presets-buttons:disabled {
@@ -96,16 +89,9 @@ body {
 }
 
 /* radio buttons */
-
-
 .radio-container {
   display: flex;
   justify-content: space-between;  
-}
-
-.radio-container label:hover {
-  transition: transform 0.5s ease;
-  transform: scale(1.1);
 }
 
 .radio-container label {
@@ -116,6 +102,11 @@ body {
   margin: 10px;
   cursor: pointer;
   text-align: center;
+}
+
+.radio-container input[type="radio"]:not(:disabled):hover + label:hover {
+  transition: transform 0.5s ease;
+  transform: scale(1.1);
 }
 
 .radio-container input[type="radio"] {
@@ -181,7 +172,6 @@ tr td:last-child {
   border-bottom: none;
   border-right: none;
 }
-
 
 /* Remove the border on the first and last th elements in each column */
 tr:first-child th {
