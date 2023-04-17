@@ -1,9 +1,9 @@
 import { setTodayDate, weekPreset, monthPreset } from './presets.js';
 import { secondDateButtonsEnabling, calculateButtonEnabling, radioBtnsEnabling } from './buttonsEnabling.js';
 import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
-import { getSelectedTypeOfDays, typeOfDaysForMessage, calculateDateDiff } from './typeOfDays.js';
+import { getSelectedTypeOfDays, calculateDateDiff } from './typeOfDays.js';
 import { saveTableResultsToLocalStorage, loadTableResultsFromLocalStorage, enableDeleteButton, deleteSavedData } from './localStorage.js';
-import { updateTable } from './updateTable.js';
+import { updateTable, typeOfDaysForMessage } from './updateTable.js';
 
 const startDateInput = document.getElementById('start-date');
 const endDateInput = document.getElementById('end-date');
