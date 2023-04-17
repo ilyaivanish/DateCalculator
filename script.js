@@ -20,7 +20,7 @@ const deleteBtn = document.getElementById('delete-data-btn');
 
 const startApp = () => {
 
-  loadTableResultsFromLocalStorage()
+  loadTableResultsFromLocalStorage(tableBody)
   enableDeleteButton(table, deleteBtn)
 
   // Set the minimum date for the end date input field to be the same as the start date

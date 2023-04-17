@@ -1,4 +1,4 @@
-export function loadTableResultsFromLocalStorage() {
+export function loadTableResultsFromLocalStorage(tableBody) {
 
   // Load data from local storage
   const results = JSON.parse(localStorage.getItem('tableData'));
@@ -6,7 +6,6 @@ export function loadTableResultsFromLocalStorage() {
   // Check if we have some data in storage 
   if (!results) return;
 
-  const tableBody = document.getElementById('results-table').getElementsByTagName('tbody')[0];
   results.forEach(result => {
     const row = tableBody.insertRow();
     const cell1 = row.insertCell(0);
