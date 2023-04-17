@@ -2,7 +2,8 @@ import { setTodayDate, weekPreset, monthPreset } from './presets.js';
 import { secondDateButtonsEnabling, calculateButtonEnabling, radioBtnsEnabling } from './buttonsEnabling.js';
 import { getSelectedTypeOfTime, timeConverter } from './calculateByTimeType.js'
 import { getSelectedTypeOfDays, calculateDateDiff } from './typeOfDays.js';
-import { saveTableResultsToLocalStorage, loadTableResultsFromLocalStorage, enableDeleteButton, deleteSavedData } from './localStorage.js';
+import { saveTableResultsToLocalStorage, loadTableResultsFromLocalStorage } from './localStorage.js';
+import { enableDeleteButton, deleteSavedData } from './deleteButton.js'
 import { updateTable, typeOfDaysForMessage } from './updateTable.js';
 
 const startDateInput = document.getElementById('start-date');
@@ -15,6 +16,7 @@ const calculateBtn = document.getElementById("calculate-btn");
 const table = document.getElementById('results-table');
 const tableBody = table.querySelector('tbody');
 const deleteBtn = document.getElementById('delete-data-btn');
+
 
 const startApp = () => {
 
@@ -78,7 +80,9 @@ const startApp = () => {
   calculateBtn.addEventListener('click', () => {
     deleteBtn.style.display = 'block';
   });
-  deleteBtn.addEventListener('click', deleteSavedData);
+  deleteBtn.addEventListener('click', () => {
+    deleteSavedData(table, deleteBtn)
+  });
 };
 
 
