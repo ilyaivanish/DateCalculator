@@ -4,8 +4,10 @@ export function loadTableResultsFromLocalStorage(tableBody) {
   const results = JSON.parse(localStorage.getItem('tableData'));
 
   // Check if we have some data in storage 
-  if (!results) return;
-
+  if (!results) {
+    return;
+  };
+  
   results.forEach(result => {
     const row = tableBody.insertRow();
     const cell1 = row.insertCell(0);
@@ -17,13 +19,7 @@ export function loadTableResultsFromLocalStorage(tableBody) {
   });
 }
   
-export function saveTableResultsToLocalStorage() {
-    // Get the table element
-    const table = document.getElementById('results-table');
-  
-    // Get the table rows
-    const rows = table.getElementsByTagName('tr');
-  
+export function saveTableResultsToLocalStorage(rows) {
     // Initialize an empty array to store the table data
     const tableData = [];
   

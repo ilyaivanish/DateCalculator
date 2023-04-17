@@ -16,7 +16,7 @@ const calculateBtn = document.getElementById("calculate-btn");
 const table = document.getElementById('results-table');
 const tableBody = table.querySelector('tbody');
 const deleteBtn = document.getElementById('delete-data-btn');
-
+const rows = table.getElementsByTagName('tr');
 
 const startApp = () => {
 
@@ -76,7 +76,9 @@ const startApp = () => {
   }
 
   calculateBtn.addEventListener('click', calculateDateDifference);
-  calculateBtn.addEventListener('click', saveTableResultsToLocalStorage);
+  calculateBtn.addEventListener('click', () => {
+    saveTableResultsToLocalStorage(rows)
+  });
   calculateBtn.addEventListener('click', () => {
     deleteBtn.style.display = 'block';
   });

@@ -2,7 +2,7 @@
 export function getSelectedTypeOfTime() {
     const radioContainer = document.getElementById('countOptions');
     const selectedRadio = radioContainer.querySelector('input[name="filter"]:checked');
-return selectedRadio.id;
+  return selectedRadio.id;
 }
 
 // const selectedRadioValue = getSelectedRadioValue();
